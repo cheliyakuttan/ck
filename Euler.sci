@@ -7,3 +7,16 @@ function[x,y]=Euler(f,x_i,x_f,y_i,h)
     mprintf("\nx\ty(x)\n",X',Y)
     disp([X',Y])
     endfunction
+
+
+
+
+function func=f(X,Y)
+    func=k*(Y-T_s)
+endfunction
+k=0.1
+x_i=0
+x_f=10
+y_i=83.0
+h=0.5
+[x,y]=modifiedEuler(f,x_i,x_f,y_i,h
