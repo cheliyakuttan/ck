@@ -1,0 +1,27 @@
+sci
+function[x,y]=RK2(f,x_i,x_f,y_i,h)
+    x=x_i:h:x_f
+    y(1)=y_i;
+    for j=2:length(x)
+        k1=f(x(j-1),y(j-1))
+        k2=f(x(j-1)+(2/3)*h,y(j-1)+(2/3)*h*k1)
+        y(j)=y(j-1)+h/4*(k1+3*k2)
+        end
+        disp(x',y)
+        plot(x',y)
+        title("Discharge of a capacitor in RC circuit")
+        xlabel("time")
+        ylabel("charge")
+        xgrid
+        endfunction
+sce
+function func=f(x,y)
+    func=(-y)/(R*C)
+endfunction
+R=2
+C=1
+x_i=0;
+x_f=3;
+y_i=4;
+h=0.2;
+[x,y]=RK2(f,x_i,x_f,y_i,h)
