@@ -1,0 +1,27 @@
+SCI
+function[x,y]=RK2(f,x_i,x_f,y_i,h)
+    x=x_i:h:x_f
+    y(1)=y_i;
+    for j=2:length(x)
+        k1=f(x(j-1),y(j-1))
+        k2=f(x(j-1)+(2/3)*h,y(j-1)+(2/3)*h*k1)
+        y(j)=y(j-1)+(h/4)*(k1+3*k2)
+        end
+        disp(x',y)
+        plot(x',y)
+        title("Free fall")
+        xlabel("time")
+        ylabel("velocity")
+        xgrid
+        endfunction
+SCE
+function func=f(x,y)
+    func=-g*(sqrt((2*H)/g))
+endfunction
+g=9.8
+H=50
+x_i=0;
+x_f=3.2;
+y_i=0;
+h=0.1;
+[x,y]=RK2(f,x_i,x_f,y_i,h)
