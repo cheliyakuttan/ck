@@ -1,0 +1,30 @@
+sci
+function[x,y]=RK4(f,x_i,x_f,y_i,h)
+    x=x_i:h:x_f
+    y(1)=y_i;
+    for j=2:length(x)
+        k1=f(x(j-1),y(j-1))
+        k2=f(x(j-1)+(0.5)*h,y(j-1)+(0.5)*h*k1)
+        k3=f(x(j-1)+(0.5)*h,y(j-1)+(0.5)*h*k2)
+        k4=f(x(j-1)+h,y(j-1)+h*k3)
+        y(j)=y(j-1)+h*((1/6)*k1+(2/6)*k2+(2/6)*k3+(1/6)*k4)
+        end
+        disp(x',y)
+        plot(x',y)
+        title("Growth of current in LR circuit")
+        xlabel("time")
+        ylabel("current")
+        xgrid
+        endfunction
+sce
+function func=f(x,y)
+    func=(V-y*R)/L
+endfunction
+R=10
+L=5
+V=1
+x_i=0;
+x_f=3;
+y_i=0;
+h=0.1;
+[x,y]=RK4(f,x_i,x_f,y_i,h)
